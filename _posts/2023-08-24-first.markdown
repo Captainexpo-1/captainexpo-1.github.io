@@ -2,4 +2,8 @@
 layout: post
 title: Hello world!
 ---
-woope
+This is the first post to my blog (this website) with hopefully many more to come. 
+
+```python
+print("Hello World!")
+```
