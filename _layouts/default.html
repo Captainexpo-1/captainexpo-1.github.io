@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+</head>
+<body>
+    <div id="top-bar">
+        <!--top bar is in a line going {Title(id="pg-title") About Home}-->
+        <div id="pg-title">{{ site.title }}</div>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+
+    </div>
+    <div id="content">
+        {{ content }}
+    </div>
+    <a href="https://github.com/Captainexpo-1"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="" 
+        style="position: absolute; right: 5px; bottom: 5px; border: 0; max-width: 30px;"
+    ></a>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</html>

@@ -1,0 +1,32 @@
+---
+layout: post
+title: Sample
+---
+
+# Sample Blog Post with Markdown Features
+
+This is a sample blog post written in Markdown. You can use this as a template to create your own blog posts in your Jekyll project.
+
+## Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut turpis ac urna vulputate varius. Nullam posuere nisl id sem feugiat tincidunt. Sed dapibus in libero eget dictum. Phasellus commodo, justo at posuere iaculis, libero tellus rhoncus urna, vel vehicula felis ex ut urna.
+
+
+## Main Content
+
+Vestibulum at turpis vel augue dapibus feugiat. Nulla facilisi. Phasellus sit amet nisi ut ante consectetur tincidunt. Sed lacinia lorem quis risus blandit, vel ullamcorper metus bibendum. Duis non quam et dui semper vehicula vel vel odio.
+
+### Subsection 1
+
+Mauris sodales urna a quam euismod, vel rhoncus lorem mattis. Integer vel malesuada elit. Sed vel fermentum metus. Proin ut metus et dolor luctus laoreet vel sit amet purus.
+
+#### Code Example
+
+Here's a code example in Python:
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+```
