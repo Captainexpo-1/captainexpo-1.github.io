@@ -5,36 +5,54 @@ layout: post
 This is a list of all my projects that I can think of in no particular order.
 
 
+
+
 ### Star Study
+
 
 [This](https://star-study.web.app/) is a severely broken studying application focused on a unique method of studying. It uses Firebase for auth and the database.
 
+
 ### 3D Renderer
 
-Currently i'm building a simple in progress 3d renderer built using SFML and c++ because I wanted to challenge myself.
+
+Currently I'm building a simple in progress 3d renderer built using SFML and c++ because I wanted to challenge myself.
+
 
 ### Prompty
 
-[This](https://prompty-bff99300b53b.herokuapp.com/) project was built in three days for [Outernet](https://outernet.hackclub.com/) and is meant to help people excersise prompt engineering. You can play it if the application is up, but it probably won't be.
+
+[This](https://prompty-bff99300b53b.herokuapp.com/) project was built in three days for [Outernet](https://outernet.hackclub.com/) and is meant to help people exercise prompt engineering. You can play it if the application is up, but it probably won't be.
 
 
-### C++ Raycasing Engine
-[This](https://github.com/Captainexpo-1/cpp-raycasting-engine) is the second raycasting engine that I've wrote, it's in c++ and uses SFML as the graphics library. Currently it has a half-functioning texture system and a broken sprite/entity system, but it helped me learn the basics of the c++ language.
+
+
+### C++ Raycasting Engine
+[This](https://github.com/Captainexpo-1/cpp-raycasting-engine) is the second raycasting engine that I've written, it's in c++ and uses SFML as the graphics library. Currently it has a half-functioning texture system and a broken sprite/entity system, but it helped me learn the basics of the c++ language.
+
 
 ### Sinerider Contributions
 
-I contributed to the making of [this game](https://sinerider.com) near the end of development, but it was the first time that I worked in and with "real" team. I was mainly doing UI work and fixing bugs on occasion, but it really helped me learn how to communicate and work with someone other than myself.
+
+I contributed to the making of [this game](https://sinerider.com) near the end of development, but it was the first time that I worked in and with a "real" team. I was mainly doing UI work and fixing bugs on occasion, but it really helped me learn how to communicate and work with someone other than myself.
+
+
 
 
 ### Game Jam Games
 
-I have a bunch of games made in varying game jams in varying times, and you can find them all on [my itch.io page](https://captainexpo.itch.io/). The best results i've gotten are 193/1717 (When The Bullets Come), and 436/6811 (Head of Security).
+
+I have a bunch of games made in varying game jams in varying times, and you can find them all on [my itch.io page](https://captainexpo.itch.io/). The best results I've gotten are 193/1717 (When The Bullets Come), and 436/6811 (Head of Security).
+
 
 ### 8-Ball-Reincarnated
 
+
 [This](https://github.com/Captainexpo-1/8-ball-reincarnated) is a slack bot built for the #8-ball channel in the [Hack Club](https://hackclub.com) slack. It's basically just a ChatGPT bot with some extra prompt engineering.
+
 
 ### Other Projects
 I've made so much more stuff than just what's listed here, and you can find some of it at my [github](https://github.com/Captainexpo-1).
+
 
 Thank you for reading!
