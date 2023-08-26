@@ -10,8 +10,8 @@ This is a list of all my projects that I can think of in no particular order.
 [This](https://star-study.web.app/) is a severely broken studying application focused on a unique method of studying. It uses Firebase for auth and the database.
 
 ### 3D Renderer
-![](https://cloud-8rr05vp3t-hack-club-bot.vercel.app/0image.png)
-A simple in progress 3d renderer built using SFML and c++ because I want to.
+
+Currently i'm building a simple in progress 3d renderer built using SFML and c++ because I wanted to challenge myself.
 
 ### Prompty
 
