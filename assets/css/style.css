@@ -66,6 +66,7 @@ img{
 @media (max-width: 600px) {
     html{
         --content-width: 0px;
+        font-size: 25px;
     }
     #content{
         --content-width: 0px;
@@ -78,6 +79,7 @@ img{
 }
 @media (max-width: 1200px) {
     html{
+        font-size: 20px;
         --content-width: 50px;
     }
     #content{

@@ -19,7 +19,7 @@ Currently i'm building a simple in progress 3d renderer built using SFML and c++
 
 
 ### C++ Raycasing Engine
-[This](https://github.com/Captainexpo-1/cpp-raycasting-engine) is the second raycasting engine that I'vw wrote, it's in c++ and uses SFML as the graphics library. Currently it has a half-functioning texture system and a broken sprite/entity system, but it helped me learn the basics of the c++ language.
+[This](https://github.com/Captainexpo-1/cpp-raycasting-engine) is the second raycasting engine that I've wrote, it's in c++ and uses SFML as the graphics library. Currently it has a half-functioning texture system and a broken sprite/entity system, but it helped me learn the basics of the c++ language.
 
 ### Sinerider Contributions
 
