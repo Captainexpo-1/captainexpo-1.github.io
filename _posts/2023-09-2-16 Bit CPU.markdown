@@ -1,0 +1,72 @@
+---
+name: 16 Bit CPU
+layout: post
+---
+
+### This post is basically just bare bones documentation of this project as I'm eventually going to restart it from scratch with a new design and better architecture.  
+(Currently the video output is broken because I was implementing it as I decided to restart the CPU, but almost everything else should be working.)
+
+# The whole thing
+
+![The whole thing](https://cloud-i3s988k1t-hack-club-bot.vercel.app/016-bit-cpu.png)
+
+
+
+# Basic overview
+
+There are a few main parts of this CPU with them being:
+
+1. The control unit
+
+2. The ALU and registers
+
+3. The output
+
+4. The RAM
+
+These are core parts in basically every CPU and they all work together to make this CPU function. Below is an example program that calculates the Fibonacci sequence for this computer.
+
+
+
+```assembly
+SET 00001111 1 ; sets address 15 to 1
+SET 00001110 1 ; sets address 14 to 1
+
+LOAD_A 00001111 ; loads address 15 into register A
+
+STORE_A 00001101 ; sets address 13 to the value of reg A
+
+SUM 00001110 ; adds address 14 to the A register
+
+STORE_A 00001111 ; stores register A to location 15
+
+LOAD_A 00001101 ; loads address 13 to reg A
+
+STORE_A 00001110 ; stores the value of reg A to location 14
+
+JMP 00000000 ; sets the program counter to 0
+```
+*this is back when the computer was 8-bit, but it's basically the same.*
+
+# Flaws
+
+There are many flaws with this computer but the main ones are:
+
+1. There's no way for there to be multi-argument instructions
+
+2. Currently, due to the way instructions are formatted there cant be more than 2^11 memory addresses, and 2^5 instructions.
+
+3. The output capabilities **suck**
+
+4. There's only one register 
+
+These are the main issues I'm trying to solve with my new CPU. The main inspiration for the restart comes from reading up on how the  [6502](https://en.wikipedia.org/wiki/MOS_Technology_6502) processor handles instructions. 
+
+From what I've seen and understood, it splits the instructions into multiple memory addresses allowing for more powerful instructions. One possibility is using the possibly fictional ADD command. The registers (or immediates) being added together wouldn't have to be fixed within the command. It could just be:
+```assembly
+ADD r1, r2
+```
+
+This would just add r1 to r2 and store the result in r2 and crucially **this has multiple arguments!** It'll make it so much easier to make good instructions. Another thing this will allow for is the possibility of having a memory size of 2^16 which is 65536 addresses. Exponentially better than the measly 2048 addresses I had before. Another thing this solves is that I have enough space to make there be an actually good video display. For example a 40x40 display is 1600 pixels which is easy peasy considering that's **2%** of the available memory. Heck, we could even go for a 100x100 display if we're feeling crazy, but that's still around just 15% of the available memory. Probably the max that I would go for is 160x90 which is 1440 addresses. That means we currently have solved all the major flaws, so this new design seems promising.
+
+If I ever finish/start work on this new design i'll post about it on here. But anyway, thanks for reading!

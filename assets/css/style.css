@@ -102,7 +102,7 @@ body{
 
 }
 img{
-    max-width: calc(var(--content-width) / 1.2);
+    max-width: calc(var(--content-width)*4);
 }
 
 /* change content width for mobile */
