@@ -1,12 +1,48 @@
+/*
+#202225
+#292b2f
+#2f3136
+#40444b
+#36393F
+*/
+
 html{
     scroll-behavior: smooth;
     font-family: 'Roboto', sans-serif;
     --content-width: 200px;
+    --dark-mode-bg: #202225;
+    --dark-mode-text: #F6F6F6;
+    --dark-mode-link: #bebebe;
+    --dark-mode-link-hover: rgb(255, 255, 255);
+    --dark-mode-bg-2: #292b2f;
     background-repeat: no-repeat;
     background-position: center 10px;
     background-size: 100%;
     background-attachment: fixed;
+
+}
+body{
     background-color: rgb(255, 255, 255);
+}
+.dark-mode button{
+    color: var(--dark-mode-text);
+}
+.dark-mode button:hover{
+    color: #815bff !important;
+}
+.dark-mode a{
+    color: var(--dark-mode-text) !important;
+}
+.dark-mode a:hover{
+    color: var(--dark-mode-link-hover) !important;
+}
+.dark-mode{
+    background-color: var(--dark-mode-bg) !important;
+    color: var(--dark-mode-text) !important;
+}
+.dark-mode #top-bar{
+    background-color: var(--dark-mode-bg-2) !important;
+    color: var(--dark-mode-text) !important;
 }
 #content{
     
@@ -15,6 +51,15 @@ html{
     /*stop text from going off-screen*/
     max-width: calc(100% - (var(--content-width) * 2));
 
+}
+#mode-button{
+    position: absolute;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
 }
 #top-bar{
     background-color: #fff;
@@ -32,7 +77,6 @@ html{
     padding: 10px 10px;
 }
 #top-bar>a{
-    color: #111;
     font-size: 14px;
     font-weight: 500;
     line-height: 54px;
@@ -47,7 +91,6 @@ html{
     letter-spacing: -1px;
 }
 .tb-link{
-    color: #111;
     font-size: 14px;
     font-weight: 500;
     line-height: 54px;
