@@ -3,8 +3,6 @@ name: The 8-ball
 layout: post
 ---
 
-# The whole 8-ball 
-
 I made this slack bot for the 8-ball channel in the [Hackclub](https://hackclub.com) slack. It's basically just a replacement for an 8-ball bot that was deactivated. This bot is nothing special, but it was the first project that I got involved in, in that community, and I've been the maintainer ever since.
 
 Below is all the code used by the bot. You can try and parse it to make sense of it, but I've provided an explanation of it at the bottom of this post.
