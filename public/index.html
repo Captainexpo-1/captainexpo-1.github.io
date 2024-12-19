@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="filter-div">
+        <canvas id="boids-canvas"></canvas>
+    </div>
+
+    <div id="card">
+        <div id="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'about')">About Me</button>
+            <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
+            <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
+        </div>
+        <div id="about" class="tab-content">
+            <h2>About Me</h2>
+            <p>Hello! My name is <strong>Elliot</strong> and I'm a hobbyist programmer and amateur mistake-maker.</p>
+            <br>
+            <p>Occasionally, I make software and little doodads for use on the interwebs over on my <strong><a class="glitch" href="https://github.com/Captainexpo-1">GitHub</a></strong>.</p>
+            <br>
+            <p>I also have an <strong><a class="glitch" href="https://captainexpo.itch.io/">Itch.io</a></strong> page where I post my little games or do the occasional game jam.</p>
+        </div>
+        <div id="projects" class="tab-content" style="display:none">
+            <h2>Projects</h2>
+            <ul>
+                <li><strong>Project 1:</strong> This is a description</li>
+                <li><strong>Project 2:</strong> This is a description</li>
+                <li><strong>Project 3:</strong> This is a description</li>
+                <li><strong><a class="glitch" href="https://github.com/Captainexpo-1/PitLang">PitLang</a>:</strong> A simple JS-like interpreted programming language built in Rust</li>
+            </ul>
+        </div>
+        <div id="contact" class="tab-content" style="display:none">
+            <h2>Contact</h2>
+            <p>You can find me at:</p>
+            <ul>
+                <li>Email: <strong><a href="mailto:captainexpo@gmail.com">captainexpo@gmail.com</a></strong></li>
+                <li>GitHub: <strong><a href="https://github.com/Captainexpo-1" target="_blank">@Captainexpo-1</a></strong></li>
+                <li>Itch.io: <strong><a href="https://captainexpo.itch.io/">@captainexpo</a></strong></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="boids.js"></script>
+<script src="card.js"></script>
+<script src="effects.js"></script>
+<script>
+function openTab(evt, tabName) {
+    var i, tabcontent, tabbuttons;
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tabbuttons = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+</html>

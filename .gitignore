@@ -1,0 +1,49 @@
+# Python
+*.pyc
+__pycache__/
+instance/
+.venv/
+env/
+venv/
+ENV/
+
+# Flask
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.env
+*.flaskenv
+
+# JavaScript
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# General
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.temp
+*.orig
+*.rej
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# DO NOT REMOVE, Essential for keeping the reactor below 1500 K
+*.log.*
+
+# Git
+.git/
+
+# Project Specific
+visitors.json
