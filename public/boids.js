@@ -5,19 +5,21 @@ function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
+let frameCount = 0;
+
 // Resize canvas to fit window
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 0.8; // leave some room for sliders
 }
 
-var settings = {
-    count: 200,           // Number of boids. Higher values increase density.
-    speed: 10,             // Base speed of boids. Lower values make them calmer.
+const settings = {
+    count: 250,           // Number of boids. Higher values increase density.
+    speed: 10,            // Base speed of boids. Lower values make them calmer.
     perception: 100,      // Radius in which boids interact with others.
-    alignment: 25,       // How strongly boids align with their neighbors.
-    cohesion: 25,        // How strongly boids are drawn toward the group center.
-    separation: 35       // How strongly boids avoid crowding others.
+    alignment: 25,        // How strongly boids align with their neighbors.
+    cohesion: 25,         // How strongly boids are drawn toward the group center.
+    separation: 35        // How strongly boids avoid crowding others.
 };
 
 window.addEventListener('resize', resizeCanvas);
@@ -72,8 +74,8 @@ class Boid {
         this.position.y += this.velocity.y;
     
         // Limit speed
-        const speed = Math.sqrt(this.velocity.x*this.velocity.x + this.velocity.y*this.velocity.y);
-        const desiredSpeed = (settings.speed);
+        const speed = Math.hypot(this.velocity.x, this.velocity.y);
+        const desiredSpeed = settings.speed;
         if (speed > desiredSpeed) {
             this.velocity.x = (this.velocity.x / speed) * desiredSpeed;
             this.velocity.y = (this.velocity.y / speed) * desiredSpeed;
@@ -91,9 +93,9 @@ class Boid {
         const avoidMouseForce = this.avoidMouse();
 
         // sliders values
-        const alignMult = (settings.alignment) / 50;     // ~0 to 2
-        const cohMult = (settings.cohesion) / 50;        // ~0 to 2
-        const sepMult = (settings.separation) / 50;      // ~0 to 2
+        const alignMult = settings.alignment / 50;     // ~0 to 2
+        const cohMult = settings.cohesion / 50;        // ~0 to 2
+        const sepMult = settings.separation / 50;      // ~0 to 2
 
         this.acceleration.x += alignmentForce.x * alignMult;
         this.acceleration.y += alignmentForce.y * alignMult;
@@ -106,10 +108,10 @@ class Boid {
     }
 
     align(boids) {
-        let perceptionRadius = (settings.perception);
-        let steering = {x:0, y:0};
+        const perceptionRadius = settings.perception;
+        const steering = { x: 0, y: 0 };
         let total = 0;
-        for (let other of boids) {
+        for (const other of boids) {
             const d = boidDist(this.position, other.position);
             if (other !== this && d < perceptionRadius) {
                 steering.x += other.velocity.x;
@@ -121,7 +123,7 @@ class Boid {
             steering.x /= total;
             steering.y /= total;
             // steer towards that direction
-            const mag = Math.sqrt(steering.x*steering.x + steering.y*steering.y);
+            const mag = Math.hypot(steering.x, steering.y);
             if (mag > 0) {
                 steering.x = (steering.x / mag) * this.maxSpeed;
                 steering.y = (steering.y / mag) * this.maxSpeed;
@@ -134,10 +136,10 @@ class Boid {
     }
 
     cohesion(boids) {
-        let perceptionRadius = (settings.perception);
-        let steering = {x:0, y:0};
+        const perceptionRadius = settings.perception;
+        const steering = { x: 0, y: 0 };
         let total = 0;
-        for (let other of boids) {
+        for (const other of boids) {
             const d = boidDist(this.position, other.position);
             if (other !== this && d < perceptionRadius) {
                 steering.x += other.position.x;
@@ -150,7 +152,7 @@ class Boid {
             steering.y /= total;
             steering.x -= this.position.x;
             steering.y -= this.position.y;
-            const mag = Math.sqrt(steering.x*steering.x + steering.y*steering.y);
+            const mag = Math.hypot(steering.x, steering.y);
             if (mag > 0) {
                 steering.x = (steering.x / mag) * this.maxSpeed;
                 steering.y = (steering.y / mag) * this.maxSpeed;
@@ -163,17 +165,17 @@ class Boid {
     }
 
     separation(boids) {
-        let perceptionRadius = (settings.perception) / 2; // separation smaller radius
-        let steering = {x:0, y:0};
+        const perceptionRadius = settings.perception / 2; // separation smaller radius
+        const steering = { x: 0, y: 0 };
         let total = 0;
-        for (let other of boids) {
+        for (const other of boids) {
             const d = boidDist(this.position, other.position);
             if (other !== this && d < perceptionRadius) {
-                let diff = {
+                const diff = {
                     x: this.position.x - other.position.x,
                     y: this.position.y - other.position.y
                 };
-                const mag = Math.sqrt(diff.x*diff.x + diff.y*diff.y) || 1;
+                const mag = Math.hypot(diff.x, diff.y) || 1;
                 diff.x /= mag; 
                 diff.y /= mag;
                 steering.x += diff.x;
@@ -184,7 +186,7 @@ class Boid {
         if (total > 0) {
             steering.x /= total;
             steering.y /= total;
-            const mag = Math.sqrt(steering.x*steering.x + steering.y*steering.y);
+            const mag = Math.hypot(steering.x, steering.y);
             if (mag > 0) {
                 steering.x = (steering.x / mag) * this.maxSpeed;
                 steering.y = (steering.y / mag) * this.maxSpeed;
@@ -197,20 +199,20 @@ class Boid {
     }
 
     avoidMouse() {
-        let perceptionRadius = 250; // radius to start avoiding mouse
-        let steering = {x:0, y:0};
+        const perceptionRadius = 250; // radius to start avoiding mouse
+        const steering = { x: 0, y: 0 };
         const d = boidDist(this.position, mousePosition);
         if (d < perceptionRadius) {
-            let diff = {
+            const diff = {
                 x: this.position.x - mousePosition.x,
                 y: this.position.y - mousePosition.y
             };
-            const mag = Math.sqrt(diff.x*diff.x + diff.y*diff.y) || 1;
+            const mag = Math.hypot(diff.x, diff.y) || 1;
             diff.x /= mag; 
             diff.y /= mag;
             steering.x += diff.x;
             steering.y += diff.y;
-            const magSteering = Math.sqrt(steering.x*steering.x + steering.y*steering.y);
+            const magSteering = Math.hypot(steering.x, steering.y);
             if (magSteering > 0) {
                 steering.x = (steering.x / magSteering) * this.maxSpeed;
                 steering.y = (steering.y / magSteering) * this.maxSpeed;
@@ -224,12 +226,10 @@ class Boid {
 
     getColor() {
         // Cool color function
-
-        const r = Math.floor(lerp(0, 255, this.position.x / canvas.width));
-        const g = Math.floor(lerp(0, 255, this.position.y / canvas.height));
-        const b = Math.floor(lerp(0, 255, (this.position.x + this.position.y) / (canvas.width + canvas.height)));
-        
-        return `rgb(${r}, ${g}, ${b})`;
+        const h = (frameCount * 0.5 + this.position.x) % 360;
+        const s = 25;
+        const l = 50;
+        return `hsl(${h}, ${s}%, ${l}%)`;
     }
 
     draw(ctx) {
@@ -239,8 +239,8 @@ class Boid {
         ctx.rotate(angle);
         ctx.beginPath();
         ctx.moveTo(this.size, 0);
-        ctx.lineTo(-this.size, this.size/2);
-        ctx.lineTo(-this.size, -this.size/2);
+        ctx.lineTo(-this.size, this.size / 2);
+        ctx.lineTo(-this.size, -this.size / 2);
         ctx.closePath();
         ctx.fillStyle = this.getColor();
         ctx.fill();
@@ -249,14 +249,11 @@ class Boid {
 }
 
 function boidDist(a, b) {
-    let dx = Math.abs(a.x - b.x);
-    let dy = Math.abs(a.y - b.y);
-    return Math.sqrt(dx*dx + dy*dy);
-
+    return Math.hypot(a.x - b.x, a.y - b.y);
 }
 
 function limitForce(vec, max) {
-    const m = Math.sqrt(vec.x*vec.x + vec.y*vec.y);
+    const m = Math.hypot(vec.x, vec.y);
     if (m > max) {
         vec.x = (vec.x / m) * max;
         vec.y = (vec.y / m) * max;
@@ -277,11 +274,12 @@ function initBoids() {
 initBoids();
 
 function animate() {
+    frameCount++;
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Flock and update
-    for (let boid of boids) {
+    for (const boid of boids) {
         boid.flock(boids);
         boid.update();
         boid.edges();

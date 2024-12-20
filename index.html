@@ -13,9 +13,10 @@
 
     <div id="card">
         <div id="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'about')">About Me</button>
-            <button class="tab-button" onclick="openTab(event, 'projects')">Projects</button>
-            <button class="tab-button" onclick="openTab(event, 'contact')">Contact</button>
+            <button class="tab-button active glitch" onclick="openTab(event, 'about')">About Me</button>
+            <button class="tab-button glitch" onclick="openTab(event, 'projects')">Projects</button>
+            <button class="tab-button glitch" onclick="openTab(event, 'contact')">Contact</button>
+            <!--<button class="tab-button" onclick="navToOther()">Other</button>-->
         </div>
         <div id="about" class="tab-content">
             <h2>About Me</h2>
@@ -28,26 +29,31 @@
         <div id="projects" class="tab-content" style="display:none">
             <h2>Projects</h2>
             <ul>
-                <li><strong><a class="glitch" href="Prompty">Prompty</a>:</strong> A web game that trains LLM prompt engineering by making the player get an AI to say certain phrases</li>    
+                <li><strong><a class="glitch" href="https://github.com/Captainexpo-1/Prompty">Prompty</a>:</strong> A web game that trains LLM prompt engineering by making the player get an AI to say certain phrases</li>    
                 <li><strong><a class="glitch" href="https://github.com/Captainexpo-1/Personal-Website">Personal Website</a>:</strong> The website you're currently on</li>
                 <li><strong><a class="glitch" href="https://github.com/Captainexpo-1/PitLang">PitLang</a>:</strong> A simple JS-like interpreted programming language built in Rust</li>
+                <li><strong><a class="glitch" href="https://github.com/Captainexpo-1">Almost everything else</a></strong></li>
             </ul>
         </div>
         <div id="contact" class="tab-content" style="display:none">
             <h2>Contact</h2>
             <p>You can find me at:</p>
             <ul>
-                <li>Email: <strong><a href="mailto:captainexpo@gmail.com">captainexpo@gmail.com</a></strong></li>
-                <li>GitHub: <strong><a href="https://github.com/Captainexpo-1" target="_blank">@Captainexpo-1</a></strong></li>
-                <li>Itch.io: <strong><a href="https://captainexpo.itch.io/">@captainexpo</a></strong></li>
+                <li>Email: <strong><a class="glitch" href="mailto:captainexpo@gmail.com">captainexpo@gmail.com</a></strong></li>
+                <li>GitHub: <strong><a class="glitch" href="https://github.com/Captainexpo-1" target="_blank">@Captainexpo-1</a></strong></li>
+                <li>Itch.io: <strong><a class="glitch" href="https://captainexpo.itch.io/">@captainexpo</a></strong></li>
             </ul>
         </div>
     </div>
 </body>
+<script src="quadtree.js"></script>
 <script src="boids.js"></script>
 <script src="card.js"></script>
 <script src="effects.js"></script>
 <script>
+function navToOther(){
+    window.location.href = "/other";
+}
 function openTab(evt, tabName) {
     var i, tabcontent, tabbuttons;
     tabcontent = document.getElementsByClassName("tab-content");

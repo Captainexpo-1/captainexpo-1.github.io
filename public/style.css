@@ -23,8 +23,10 @@ body {
 
 canvas {
     position: relative;
-    height: 100%;
-    width: 100%;
+    top: -35px;
+    height: calc(100% + 70px);
+    left: -35px;
+    width: calc(100% + 70px);
 }
 
 #filter-div {
@@ -47,6 +49,7 @@ canvas {
 }
 
 .tab-button {
+    font-weight: bold;
     background-color: var(--tab-background-color);
     outline: none;
     border: none;
@@ -83,10 +86,10 @@ canvas {
     background-color: var(--card-background-color);
     padding: 20px;
     box-sizing: border-box;
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(40px);
     color: var(--font-color);
     text-align: center;
-    transition: 0.1s;
+    transition: 0.175s;
     text-align: left;
 }
 

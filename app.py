@@ -20,7 +20,11 @@ def home():
         f.seek(0)
         f.write(json.dumps(visitors, indent=4))
         f.truncate()
-    return send_from_directory('public', 'index.html')
+    return send_from_directory('.', 'index.html')
+
+@app.route('/other')
+def other():
+    return send_from_directory('public/other', 'index.html')
 
 @app.route('/<path:filename>')
 def serve_file(filename):

@@ -1,31 +1,39 @@
 
-async function startGlitch(element, length){
-    return new Promise((resolve, reject) => {
-        const ogText = element.innerHTML;
+async function startGlitch(element, duration) {
+    return new Promise((resolve) => {
+        const originalText = element.textContent;
+        const length = originalText.length;
+        const glitchChars = ['@', '#', '$', '%', '&', '*', '+', '!', '?', '~'];
+        
         element.classList.add('glitching');
-        const len = ogText.length;
-        let curLen = 0;
-        let curText = "";
+        
+        let currentLength = 0;
         const interval = setInterval(() => {
-            curText += ogText[curLen];
-            element.innerHTML = curText + "&nbsp;".repeat(len - curLen - 1);
-            if (curLen++ >= len-1){
+            const revealed = originalText.slice(0, currentLength);
+            const remaining = length - currentLength;
+            const glitchy = Array.from({ length: remaining }, () => {
+                return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            }).join('');
+            
+            element.textContent = revealed + glitchy;
+            
+            currentLength++;
+            if (currentLength > length) {
                 clearInterval(interval);
-                element.innerHTML = ogText;
+                element.textContent = originalText;
+                element.style.color = '';
                 element.classList.remove('glitching');
                 resolve();
             }
-        }, length/len);
+        }, duration / length);
     });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.glitch').forEach((element) => {
-        element.onmouseenter = async () => {
+        element.addEventListener('mouseenter', async () => {
             if (element.classList.contains('glitching')) return;
-            const og = element.innerHTML;
-            console.log(og);
-            await startGlitch(element, 300);
-        };
+            await startGlitch(element, 600);
+        });
     });
 });
