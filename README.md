@@ -18,7 +18,7 @@ It uses vanilla JavaScript and HTML5 canvas, and it is based on the [boids algor
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Captainexpo-1/Personal-Website.git
+    git clone https://github.com/Captainexpo-1/captainexpo-1.github.io.git
     ```
 2. Open `index.html` in your web browser.
 
