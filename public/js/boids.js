@@ -287,4 +287,17 @@ function animate() {
     }
 }
 
+function setBoidCount(value) {
+    settings.count = value;
+    const doInc = value > boids.length;
+    const diff = Math.abs(value - boids.length);
+    if (doInc) {
+        for (let i = 0; i < diff; i++) {
+            boids.push(new Boid());
+        }
+    } else {
+        boids.splice(value, diff);
+    }
+}
+
 animate();
