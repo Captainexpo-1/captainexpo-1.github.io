@@ -11,7 +11,7 @@ function getCurrentFPS() {
     return parseInt(fps); // Returns FPS rounded to 2 decimal places
 }
 
-function update() {
+function regulatorUpdate() {
     const curFPS = getCurrentFPS();
     rollingAverage.push(curFPS);
     if (rollingAverage.length > 25) {
@@ -28,7 +28,5 @@ function update() {
         
     }
 
-    requestAnimationFrame(update);
+    requestAnimationFrame(regulatorUpdate);
 }
-
-update();

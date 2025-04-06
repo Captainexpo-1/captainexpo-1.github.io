@@ -1,5 +1,5 @@
-const canvas = document.getElementById('boids-canvas');
-const ctx = canvas.getContext('2d');
+const boidsCanvas = document.getElementById('effect-canvas');
+const boidsCtx = boidsCanvas.getContext('2d');
 
 function lerp(a, b, t) {
     return a + (b - a) * t;
@@ -8,9 +8,9 @@ function lerp(a, b, t) {
 let frameCount = 0;
 
 // Resize canvas to fit window
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.8; // leave some room for sliders
+function resizeBoidsCanvas() {
+    boidsCanvas.width = window.innerWidth;
+    boidsCanvas.height = window.innerHeight; // leave some room for sliders
 }
 
 const settings = {
@@ -22,24 +22,17 @@ const settings = {
     separation: 35        // How strongly boids avoid crowding others.
 };
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+
 
 let mousePosition = { x: 0, y: 0 };
 
-canvas.addEventListener('mousemove', (event) => {
-    const rect = canvas.getBoundingClientRect(); // Get canvas position and size
-    mousePosition = {
-        x: (event.clientX - rect.left) * (canvas.width / rect.width),
-        y: (event.clientY - rect.top) * (canvas.height / rect.height)
-    };
-});
+
 
 class Boid {
     constructor() {
         this.position = {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height
+            x: Math.random() * boidsCanvas.width,
+            y: Math.random() * boidsCanvas.height
         };
         const angle = Math.random() * Math.PI * 2;
         this.velocity = {
@@ -54,10 +47,10 @@ class Boid {
     
     edges() {
         // Wrap around the screen
-        if (this.position.x > canvas.width) this.position.x = 0;
-        else if (this.position.x < 0) this.position.x = canvas.width;
-        if (this.position.y > canvas.height) this.position.y = 0;
-        else if (this.position.y < 0) this.position.y = canvas.height;
+        if (this.position.x > boidsCanvas.width) this.position.x = 0;
+        else if (this.position.x < 0) this.position.x = boidsCanvas.width;
+        if (this.position.y > boidsCanvas.height) this.position.y = 0;
+        else if (this.position.y < 0) this.position.y = boidsCanvas.height;
     }
 
     update() {
@@ -270,20 +263,22 @@ function initBoids() {
     }
 }
 
+
+
 // Init on load
 initBoids();
 
 function animate() {
     frameCount++;
     requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    boidsCtx.clearRect(0, 0, boidsCanvas.width, boidsCanvas.height);
 
     // Flock and update
     for (const boid of boids) {
         boid.flock(boids);
         boid.update();
         boid.edges();
-        boid.draw(ctx);
+        boid.draw(boidsCtx);
     }
 }
 
@@ -300,4 +295,18 @@ function setBoidCount(value) {
     }
 }
 
-animate();
+function enableBoids(){
+    document.getElementById('filter-div').style = "filter: blur(15px);"
+    window.addEventListener('resize', resizeBoidsCanvas);
+    resizeBoidsCanvas();
+    boidsCanvas.addEventListener('mousemove', (event) => {
+        const rect = boidsCanvas.getBoundingClientRect(); // Get canvas position and size
+        mousePosition = {
+            x: (event.clientX - rect.left) * (boidsCanvas.width / rect.width),
+            y: (event.clientY - rect.top) * (boidsCanvas.height / rect.height)
+        };
+    });
+    initBoids();
+    animate();
+    regulatorUpdate();
+}

@@ -1,4 +1,10 @@
 
+const EFFECT_ENABLERS = [
+    enableBoids,
+    enableText,
+];
+
+
 async function startGlitch(element, duration) {
     return new Promise((resolve) => {
         const originalText = element.textContent;
@@ -30,6 +36,11 @@ async function startGlitch(element, duration) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Get random effect enabler
+    const randomEffectEnabler = EFFECT_ENABLERS[Math.floor(Math.random() * EFFECT_ENABLERS.length)];
+    randomEffectEnabler();
+
     document.querySelectorAll('.glitch').forEach((element) => {
         element.addEventListener('mouseenter', async () => {
             if (element.classList.contains('glitching')) return;

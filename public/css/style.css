@@ -22,10 +22,10 @@ body {
 }
 
 canvas {
-    position: relative;
-    top: -35px;
+    position: fixed;
+    top: 0px;
     height: calc(100% + 70px);
-    left: -35px;
+    left: 0px;
     width: calc(100% + 70px);
 }
 
@@ -35,7 +35,6 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(15px);
 }
 
 #tabs {
@@ -82,7 +81,7 @@ canvas {
     border: 2px solid var(--card-border-color);
     border-radius: 0px 10px 10px 10px;
     width: 35%;
-    height: 35%;
+    min-height: 35%;
     background-color: var(--card-background-color);
     padding: 20px;
     box-sizing: border-box;
@@ -109,7 +108,7 @@ ul{
 
 @media screen and (max-height: 900px){
     #card {
-        height: 70%;
+        min-height: 35%;
 
         border-radius: 10px;
     }

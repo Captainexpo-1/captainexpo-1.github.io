@@ -6,8 +6,6 @@ var cardSize = { width: 0, height: 0 };
 var SCALE_X = 4;
 var SCALE_Y = 8;
 
-
-
 card.onmouseleave = function() {
     mouseHover = false;
     card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
